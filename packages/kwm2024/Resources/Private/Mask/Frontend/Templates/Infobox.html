@@ -1,0 +1,42 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<f:layout name="Default" />
+<f:section name="Main">
+    <f:if condition="{data.tx_mask_description}">
+        {data.tx_mask_description -> f:format.html()}
+    </f:if>
+    <f:if condition="{data.tx_mask_elements}">
+        <h2><f:translate key="infobox_header" extensionName="kwm2024"></f:translate></h2>
+        <table class="table">
+
+            <tbody>
+            <f:for each="{data.tx_mask_elements}" as="data_item">
+                <tr>
+                    <heade>
+                        <th>Key</th>
+                    </heade>
+
+                    <td>
+                        <f:if condition="{data_item.tx_mask_key}">
+                            {data_item.tx_mask_key}
+                        </f:if>
+                    </td>
+                <tr>
+                    <heade>
+                        <th>Value</th>
+                    </heade>
+                    <td>
+                        <f:if condition="{data_item.tx_mask_value}">
+                            {data_item.tx_mask_value}
+                        </f:if>
+                    </td>
+                </tr>
+                </tr>
+            </f:for>
+            </tbody>
+        </table>
+    </f:if>
+    <f:if condition="{data.tx_mask_link}">
+        <f:link.typolink parameter="{data.tx_mask_link}">{data.tx_mask_linklabel}</f:link.typolink>
+    </f:if>
+</f:section>

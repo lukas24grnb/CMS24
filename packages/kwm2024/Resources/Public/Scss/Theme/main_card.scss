@@ -1,0 +1,19 @@
+.card-title {
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: calc(1.235rem + .9vw);
+}
+
+.card{
+  overflow: hidden;
+  box-shadow: 0 3px 20px rgba(0,0,0,0.16);
+}
+
+.card-footer{
+  text-align: center;
+  a.btn{
+    color: $primary;
+    border: none;
+  }
+}
