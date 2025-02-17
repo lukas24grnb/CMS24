@@ -1,0 +1,30 @@
+.recipe-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 30px;
+  font-size: 1.4rem;
+}
+
+.recipe-content {
+  flex: 1;
+}
+
+
+
+h2 {
+  font-size: 2.5rem;
+}
+
+h3 {
+  font-size: 1.8rem;
+}
+
+p, li {
+  font-size: 1.4rem;
+}
+
+input#portionen-stepper {
+  font-size: 1.4rem;
+  width: 70px;
+  padding: 5px;
+}
