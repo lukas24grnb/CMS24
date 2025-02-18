@@ -1,0 +1,34 @@
+
+.news-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: flex-start;
+}
+
+
+.news-card {
+  width: 400px;
+  max-width: 400px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.news-detail-container {
+  display: flex;
+  gap: 20px;
+}
+
+.news-image {
+  flex: 1;
+
+}
+
+.news-content {
+  flex: 2;
+}
+
+
