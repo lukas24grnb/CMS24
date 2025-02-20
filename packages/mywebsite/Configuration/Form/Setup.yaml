@@ -1,0 +1,6 @@
+TYPO3:
+  CMS:
+  Form:
+  persistenceManager:
+  allowedExtensionPaths:
+    120: EXT:mywebsite/Resources/Private/Forms/
