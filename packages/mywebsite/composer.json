@@ -1,0 +1,25 @@
+{
+    "name": "fhooe/mywebsite",
+    "type": "typo3-cms-extension",
+    "description": "",
+    "homepage": "https://www.fh-ooe.at/",
+    "license": ["GPL-2.0-or-later"],
+    "keywords": ["TYPO3 CMS"],
+    "repositories": [
+        {"type": "composer","url": "https://composer.typo3.org/"},
+        {"type": "path","url": "packages/*"}
+    ],
+    "require": {
+        "bk2k/bootstrap-package": "^15.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Fhooe\\Mywebsite\\": "Classes/"
+        }
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "mywebsite"
+        }
+    }
+}

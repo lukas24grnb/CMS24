@@ -1,0 +1,66 @@
+######################
+#### DEPENDENCIES ####
+######################
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:bootstrap_package/Configuration/TypoScript/constants.typoscript">
+
+
+############
+### PAGE ###
+############
+page {
+    logo {
+        file = EXT:mywebsite/Resources/Public/Images/logo.svg
+        fileInverted = EXT:mywebsite/Resources/Public/Images/logo-inverted.svg
+        height = 52
+        width = 192
+        alt = myWebsite
+        linktitle = myWebsite
+    }
+    favicon {
+        file = EXT:mywebsite/Resources/Public/Icons/favicon.ico
+    }
+    fluidtemplate {
+        layoutRootPath = EXT:mywebsite/Resources/Private/Layouts/Page/
+        partialRootPath = EXT:mywebsite/Resources/Private/Partials/Page/
+        templateRootPath = EXT:mywebsite/Resources/Private/Templates/Page/
+    }
+}
+
+
+##################
+### EXTENSIONS ###
+##################
+plugin.bootstrap_package {
+    view {
+        layoutRootPath = EXT:mywebsite/Resources/Private/Layouts/
+        partialRootPath = EXT:mywebsite/Resources/Private/Partials/
+        templateRootPath = EXT:mywebsite/Resources/Private/Templates/
+    }
+}
+
+
+########################
+### CONTENT ELEMENTS ###
+########################
+plugin.bootstrap_package_contentelements {
+    view {
+        layoutRootPath = EXT:mywebsite/Resources/Private/Layouts/ContentElements/
+        partialRootPath = EXT:mywebsite/Resources/Private/Partials/ContentElements/
+        templateRootPath = EXT:mywebsite/Resources/Private/Templates/ContentElements/
+    }
+}
+
+
+################################
+### BOOTSTRAP SCSS CONSTANTS ###
+################################
+plugin.bootstrap_package.settings.scss {
+    primary = #eb3e4a
+    secondary = #013859
+}
+
+plugin.tx_news.view.twb5 {
+    templateRootPath = EXT:mywebsite/Resources/Private/Templates/
+    partialRootPath = EXT:mywebsite/Resources/Private/Partials/
+    layoutRootPath = EXT:mywebsite/Private/Layouts/
+}

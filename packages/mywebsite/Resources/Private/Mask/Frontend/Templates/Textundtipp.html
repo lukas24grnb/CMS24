@@ -1,0 +1,6 @@
+<f:if condition="{data.tx_mask_beschreibung}">
+    {data.tx_mask_beschreibung -> f:format.html()}
+</f:if>
+<f:if condition="{data.tx_mask_tipp}">
+    <b>{data.tx_mask_tipp -> f:format.nl2br()}</b>
+</f:if>

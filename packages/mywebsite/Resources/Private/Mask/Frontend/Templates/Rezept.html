@@ -1,0 +1,55 @@
+<h2>{data.tx_mask_name}</h2>
+
+<p><strong>Dauer:</strong> {data.tx_mask_dauer}</p>
+
+<p>
+    <strong>Portionen:</strong>
+    <input type="number" id="portionen-stepper" value="{data.tx_mask_portionen}" min="1" max="10" />
+    <span id="portionen-text">Pizzen</span>
+</p>
+
+<div class="recipe-container">
+    <div class="recipe-content">
+        <h3>Zutaten:</h3>
+        <ul id="zutaten-liste">
+            <f:for each="{data.tx_mask_zutatenliste}" as="data_item">
+                <li>
+                    <span class="menge" data-menge="{data_item.tx_mask_menge}">
+                        {data_item.tx_mask_menge}
+                    </span>
+                    <span class="einheit">{data_item.tx_mask_einheit}</span>
+                    {data_item.tx_mask_zutat}
+                </li>
+            </f:for>
+        </ul>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const stepper = document.getElementById("portionen-stepper");
+        const zutatenListe = document.getElementById("zutaten-liste");
+        const portionenText = document.getElementById("portionen-text");
+
+        // Ursprüngliche Mengen speichern
+        const originalMengen = Array.from(zutatenListe.querySelectorAll(".menge")).map(span => ({
+            element: span,
+            menge: parseFloat(span.dataset.menge.replace(",", ".")) || 0
+        }));
+
+        function updateMengen() {
+            const portionen = parseInt(stepper.value, 10) || 1;
+
+            originalMengen.forEach(item => {
+                const neueMenge = Math.round(item.menge * portionen);
+                item.element.textContent = neueMenge > 0 ? neueMenge : ""; // Wenn 0, dann leer
+            });
+
+            portionenText.textContent = portionen === 1 ? "Pizza" : "Pizzen";
+        }
+
+        stepper.addEventListener("input", updateMengen);
+
+        updateMengen(); // Initiale Anpassung
+    });
+</script>

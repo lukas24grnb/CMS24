@@ -1,0 +1,140 @@
+
+renderingOptions:
+  submitButtonLabel: Abschicken
+type: Form
+identifier: bewertung
+label: Bewertung
+prototypeName: standard
+finishers:
+  -
+    options:
+      subject: 'Danke für die Bewertung!'
+      recipients:
+        '{': ''
+      senderAddress: s2310456@fhooe.at
+      senderName: ''
+      addHtmlPart: true
+      attachUploads: true
+      title: ''
+    identifier: EmailToSender
+  -
+    options:
+      pageUid: '48'
+      additionalParameters: ''
+      fragment: ''
+    identifier: Redirect
+renderables:
+  -
+    renderingOptions:
+      previousButtonLabel: zurück
+      nextButtonLabel: 'nächster Schritt'
+    type: Page
+    identifier: page-1
+    label: 'Persönliche Daten'
+    renderables:
+      -
+        defaultValue: ''
+        type: Text
+        identifier: text-1
+        label: Vorname
+        properties:
+          fluidAdditionalAttributes:
+            required: required
+        validators:
+          -
+            identifier: NotEmpty
+      -
+        defaultValue: ''
+        type: Text
+        identifier: text-2
+        label: Nachname
+        properties:
+          fluidAdditionalAttributes:
+            required: required
+        validators:
+          -
+            identifier: NotEmpty
+      -
+        defaultValue: ''
+        type: Email
+        identifier: email-1
+        label: Email-Adresse
+        properties:
+          fluidAdditionalAttributes:
+            required: required
+        validators:
+          -
+            identifier: EmailAddress
+          -
+            identifier: NotEmpty
+  -
+    renderingOptions:
+      previousButtonLabel: zurück
+      nextButtonLabel: 'nächster Schritt'
+    type: Page
+    identifier: page-2
+    label: Rezeptbewertung
+    renderables:
+      -
+        type: GridRow
+        identifier: gridrow-1
+        label: 'Grid: Row'
+        renderables:
+          -
+            properties:
+              options:
+                Pizzateig: Pizzateig
+                'Pizza Margherita': 'Pizza Margherita'
+                'Pizza Salami': 'Pizza Salami'
+                'Pizza Marinara': 'Pizza Marinara'
+                'Pizza Bianca': 'Pizza Bianca'
+                'Pizza Tonno': 'Pizza Tonno'
+                'Pizza Burrata': 'Pizza Burrata'
+              fluidAdditionalAttributes:
+                required: required
+            type: SingleSelect
+            identifier: singleselect-1
+            label: Rezeptauswahl
+            validators:
+              -
+                identifier: NotEmpty
+          -
+            type: Fieldset
+            identifier: fieldset-1
+            label: Bewertung
+            renderables:
+              -
+                properties:
+                  options:
+                    '1 Stern': '1 Stern'
+                    '22 Sterne': '2 Sterne'
+                    '3 Sterne': '3 Sterne'
+                    '4 Sterne': '4 Sterne'
+                    '5 Sterne': '5 Sterne'
+                  fluidAdditionalAttributes:
+                    required: required
+                  gridColumnClassAutoConfiguration:
+                    viewPorts:
+                      xxl:
+                        numbersOfColumnsToUse: ''
+                type: RadioButton
+                identifier: radiobutton-1
+                label: 'Sternebewertung (1-5)'
+                validators:
+                  -
+                    identifier: NotEmpty
+      -
+        defaultValue: ''
+        type: Textarea
+        identifier: textarea-1
+        label: Feedback
+        properties:
+          fluidAdditionalAttributes:
+            placeholder: 'Wir freuen uns über Ihr Feedback!'
+  -
+    renderingOptions:
+      previousButtonLabel: zurück
+      nextButtonLabel: 'nächster Schritt'
+    type: SummaryPage
+    identifier: summarypage-1
+    label: Zusammenfassung

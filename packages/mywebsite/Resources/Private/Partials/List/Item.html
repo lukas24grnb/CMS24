@@ -1,0 +1,76 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+<!--
+    =====================
+        Partials/List/Item.html
+-->
+
+<div class="news-card card mb-3 articletype-{newsItem.type}{f:if(condition: newsItem.istopnews, then: ' topnews')}"
+     itemscope="itemscope" itemtype="https://schema.org/Article">
+
+    <n:excludeDisplayedNews newsItem="{newsItem}"/>
+
+    <!-- Medien-Element (Bild oder Video) -->
+    <f:if condition="{newsItem.mediaPreviews}">
+        <f:then>
+            <n:link newsItem="{newsItem}" settings="{settings}" title="{newsItem.title}">
+                <f:alias map="{mediaElement: newsItem.mediaPreviews.0}">
+                    <f:if condition="{mediaElement.originalResource.type} == 2">
+                        <f:image image="{mediaElement}" class="card-img-top"
+                                 title="{mediaElement.originalResource.title}"
+                                 alt="{mediaElement.originalResource.alternative}"
+                                 loading="{settings.list.media.image.lazyLoading}"
+                                 maxWidth="400" maxHeight="250"/>
+                    </f:if>
+                </f:alias>
+            </n:link>
+        </f:then>
+        <f:else>
+            <f:if condition="{settings.displayDummyIfNoMedia}">
+                <n:link newsItem="{newsItem}" settings="{settings}" title="{newsItem.title}">
+                    <f:image src="{settings.list.media.dummyImage}" class="card-img-top"
+                             alt="Dummy Image" loading="{settings.list.media.image.lazyLoading}"
+                             maxWidth="400" maxHeight="250"/>
+                </n:link>
+            </f:if>
+        </f:else>
+    </f:if>
+
+    <!-- Card Body -->
+    <div class="card-body">
+        <h2 class="card-title" itemprop="headline">{newsItem.title}</h2>
+
+        <!-- Teaser -->
+        <div class="card-text" itemprop="description">
+            <n:removeMediaTags>
+                <f:if condition="{newsItem.teaser}">
+                    <f:then>
+                        {newsItem.teaser -> f:format.crop(maxCharacters: '150', respectWordBoundaries: '1') -> f:format.html()}
+                    </f:then>
+                    <f:else>
+                        {newsItem.bodytext -> f:format.crop(maxCharacters: '150', respectWordBoundaries: '1') -> f:format.html()}
+                    </f:else>
+                </f:if>
+            </n:removeMediaTags>
+        </div>
+
+        <!-- Mehr-Link als Button -->
+        <n:link newsItem="{newsItem}" settings="{settings}" class="btn btn-primary mt-3" title="{newsItem.title}">
+            <f:translate key="more-link"/>
+        </n:link>
+    </div>
+
+    <!-- Card Footer mit Datum & Kategorie -->
+    <div class="card-footer text-muted">
+        <time itemprop="datePublished" datetime="{f:format.date(date:newsItem.datetime, format:'Y-m-d')}">
+            <f:format.date format="d.m.Y">{newsItem.datetime}</f:format.date>
+        </time>
+
+        <f:if condition="{newsItem.firstCategory}">
+            <span class="badge bg-secondary ms-2">{newsItem.firstCategory.title}</span>
+        </f:if>
+    </div>
+
+</div>
+</html>

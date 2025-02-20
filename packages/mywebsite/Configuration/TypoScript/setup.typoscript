@@ -1,0 +1,67 @@
+######################
+#### DEPENDENCIES ####
+######################
+@import 'EXT:vhs/Configuration/TypoScript/setup.typoscript'
+@import 'EXT:news/Configuration/TypoScript/setup.typoscript'
+@import 'EXT:news/Configuration/TypoScript/Styles/Twb5/setup.typoscript'
+@import 'EXT:mask/Configuration/TypoScript/setup.typoscript'
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:bootstrap_package/Configuration/TypoScript/setup.typoscript">
+
+
+##############
+#### PAGE ####
+##############
+
+
+page {
+    includeCSS {
+        theme = EXT:mywebsite/Resources/Public/Scss/Theme/theme.scss
+    }
+
+    includeJSLibs {
+
+    }
+
+    includeJS {
+
+    }
+
+    includeJSFooterlibs {
+
+    }
+
+    includeJSFooter {
+        mywebsite_scripts = EXT:mywebsite/Resources/Public/JavaScript/Dist/scripts.js
+    }
+}
+
+
+plugin.tx_news {
+    settings {
+        #displayDummyIfNoMedia = 1
+        cropMaxCharacters = 200
+        list {
+            paginate {
+                itemsPerPage = 2
+                insertAbove = false
+                insertBelow = true
+            }
+            media {
+                image {
+                    maxWidth = 249
+                    maxHeight = 191
+                }
+            }
+        }
+    }
+    _LOCAL_LANG{
+        de{
+            more-link=zum Rezept
+            back-link=zurück
+            dateFormat=%d.%m.%Y
+        }s
+    }
+}
+
+plugin.tx_form.settings.yamlConfigurations.100 = EXT:mywebsite/Configuration/Form/Setup.yaml
+module.tx_form.settings.yamlConfigurations.100 = EXT:mywebsite/Configuration/Form/Setup.yaml
